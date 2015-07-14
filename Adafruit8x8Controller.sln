@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adafruit8x8Controller", "Adafruit8x8Controller\Adafruit8x8Controller.csproj", "{77747F32-7805-4B3A-844C-33F46BEBFBED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{77747F32-7805-4B3A-844C-33F46BEBFBED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77747F32-7805-4B3A-844C-33F46BEBFBED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77747F32-7805-4B3A-844C-33F46BEBFBED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77747F32-7805-4B3A-844C-33F46BEBFBED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
