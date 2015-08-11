@@ -2,9 +2,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Adafruit8x8Controller
 {
@@ -46,14 +43,39 @@ namespace Adafruit8x8Controller
         /// <param name="updateMode">Update mode, defaults to Automatic</param>
         public Controller(int addr = 0x70, DisplayUpdateMode updateMode = DisplayUpdateMode.Automatic)
         {
-            driver = new I2cDriver(Raspberry.IO.GeneralPurpose.ProcessorPin.Pin2, Raspberry.IO.GeneralPurpose.ProcessorPin.Pin3);
-            connection = driver.Connect(addr);
-            connection.Write(START_DISPLAY);
+            InitializeConnection(addr);
+            StartDisplay();
             SetBlink(Blink.Off);
             SetBrightness(BRIGHTNESS_HI);
             UpdateMode = updateMode;
+            CreateBuffers();
+        }
+
+        /// <summary>
+        /// Creates display column/row buffers
+        /// </summary>
+        private void CreateBuffers()
+        {
             for (var i = 0; i < displayBuffer.Length; i++)
                 displayBuffer[i] = new BitArray(8, false);
+        }
+
+        /// <summary>
+        /// Initializes the connection
+        /// </summary>
+        /// <param name="addr">I2C address for the matrix.</param>
+        private void InitializeConnection(int addr)
+        {
+            driver = new I2cDriver(Raspberry.IO.GeneralPurpose.ProcessorPin.Pin2, Raspberry.IO.GeneralPurpose.ProcessorPin.Pin3);
+            connection = driver.Connect(addr);
+        }
+
+        /// <summary>
+        /// Initializes the display
+        /// </summary>
+        public void StartDisplay()
+        {
+            connection.Write(START_DISPLAY);
         }
 
         /// <summary>
@@ -111,8 +133,7 @@ namespace Adafruit8x8Controller
         /// <param name="state">Boolean state of specified pixel</param>
         public void SetPixel(int x, int y, bool state)
         {
-            WrapX(ref x);
-            WrapY(ref y);
+            WrapCoords(ref x, ref y);
             displayBuffer[y].Set(x, state);
             if (UpdateMode == DisplayUpdateMode.Automatic)
                 Update();
@@ -126,8 +147,7 @@ namespace Adafruit8x8Controller
         /// <returns></returns>
         public bool GetPixel(int x, int y)
         {
-            WrapX(ref x);
-            WrapY(ref y);
+            WrapCoords(ref x, ref y);
             return displayBuffer[y].Get(x);
         }
 
@@ -139,11 +159,10 @@ namespace Adafruit8x8Controller
         /// <param name="y">Y-coordinate (wrapped at 8, no overflow allowed)</param>
         public void TogglePixel(int x, int y)
         {
-            WrapX(ref x);
-            WrapY(ref y);
+            WrapCoords(ref x, ref y);
+            displayBuffer[y].Set(x, !displayBuffer[y].Get(x));
             if (UpdateMode == DisplayUpdateMode.Automatic)
-                displayBuffer[y].Set(x, !displayBuffer[y].Get(x));
-            Update();
+                Update();
         }
 
         /// <summary>
@@ -169,6 +188,12 @@ namespace Adafruit8x8Controller
                 data.Add(0x0);
             }
             connection.Write(data.ToArray());
+        }
+
+        void WrapCoords(ref int x, ref int y)
+        {
+            WrapX(ref x);
+            WrapY(ref y);
         }
 
         void WrapY(ref int y)
