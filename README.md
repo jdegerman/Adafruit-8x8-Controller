@@ -5,8 +5,8 @@ Should probably work on all Adafruit monochrome 8x8 matrices, but hasn't been te
 
 # How to wire the LED matrix
 The connectors on the matrix are (from left to right) +, -, D, and C, and should be wired against the Raspberry Pi in the following manner:
-* + to 3.3 VDC
-* - to GND
+* :heavy_plus_sign: to 3.3 VDC
+* :heavy_minus_sign: to GND
 * D to SDA (data) (Physical pin 3)
 * C to SCL (clock) (Physical pin 5)
 
