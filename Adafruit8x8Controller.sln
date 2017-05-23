@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.6
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Adafruit8x8Controller", "Adafruit8x8Controller\Adafruit8x8Controller.csproj", "{77747F32-7805-4B3A-844C-33F46BEBFBED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp", "TestApp\TestApp.csproj", "{610B8E86-6902-4F23-8D9F-DB105EE5946A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{77747F32-7805-4B3A-844C-33F46BEBFBED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{77747F32-7805-4B3A-844C-33F46BEBFBED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{77747F32-7805-4B3A-844C-33F46BEBFBED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{610B8E86-6902-4F23-8D9F-DB105EE5946A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{610B8E86-6902-4F23-8D9F-DB105EE5946A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{610B8E86-6902-4F23-8D9F-DB105EE5946A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{610B8E86-6902-4F23-8D9F-DB105EE5946A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

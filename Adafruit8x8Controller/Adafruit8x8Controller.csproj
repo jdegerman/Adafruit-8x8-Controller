@@ -59,7 +59,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Ascii.cs" />
+    <Compile Include="AdafruitController.cs" />
+    <Compile Include="ConsoleController.cs" />
     <Compile Include="Controller.cs" />
+    <Compile Include="Enums.cs" />
+    <Compile Include="ControllerBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
